@@ -625,119 +625,6 @@
         // Crear sparkles cada 500ms
         setInterval(createSparkle, 500);
         
-        // Manejar envío del formulario
-        document.getElementById('registrationForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            addDebugInfo('Form submission started');
-            
-            // Get form values consistently
-            const nombre = document.getElementById('nombre').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const status = document.getElementById('status').value;
-            const comentarios = document.getElementById('comentarios').value.trim();
-            const terminos = document.getElementById('terminos').checked;
-            
-            addDebugInfo(`Form data captured: nombre="${nombre}", email="${email}", status="${status}", comentarios="${comentarios}", terminos=${terminos}`);
-            
-            // Validate required fields
-            if (!nombre || !email || !status || !terminos) {
-                addDebugInfo('Validation failed - missing required fields');
-                alert('Por favor completa todos los campos requeridos');
-                return;
-            }
-            
-            // Animation
-            const btn = document.querySelector('.register-btn');
-            const originalText = btn.textContent;
-            btn.textContent = '🌀 PROCESANDO... 🌀';
-            btn.style.animation = 'pulse 0.5s ease-in-out infinite';
-            
-            // Submit to Google Form with CORRECT entry IDs
-            const formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSc8RWbyCfY9-T8POoLz0jhOH5q0NS8ljpgR26pMaE3E6Fsg8Q/formResponse';
-            
-            // Create form data for submission with CORRECT entry IDs
-            const formData = new URLSearchParams({
-                'entry.541435909': nombre,           // Correct ID for 'nombre'
-                'entry.559316853': email,            // Correct ID for 'email' 
-                'entry.1845764975': status,          // Correct ID for 'status' (radio button)
-                'entry.1386237812': comentarios || 'Ninguno'  // Correct ID for 'comentarios'
-            });
-            
-            addDebugInfo(`Submitting to: ${formUrl}`);
-            addDebugInfo(`Form data: ${formData.toString()}`);
-            
-            // Create a hidden iframe for submission
-            const iframe = document.createElement('iframe');
-            iframe.style.display = 'none';
-            iframe.name = 'hidden_iframe';
-            document.body.appendChild(iframe);
-            
-            // Create a temporary form for submission
-            const tempForm = document.createElement('form');
-            tempForm.action = formUrl;
-            tempForm.method = 'POST';
-            tempForm.target = 'hidden_iframe';
-            
-            // Add form fields
-            Object.entries(Object.fromEntries(formData)).forEach(([key, value]) => {
-                const input = document.createElement('input');
-                input.type = 'hidden';
-                input.name = key;
-                input.value = value;
-                tempForm.appendChild(input);
-            });
-            
-            document.body.appendChild(tempForm);
-            
-            // Handle iframe load event
-            iframe.onload = function() {
-                addDebugInfo('Form submitted successfully');
-                
-                // Clean up
-                document.body.removeChild(tempForm);
-                document.body.removeChild(iframe);
-                
-                // Hide form
-                document.querySelector('.registration-section').style.display = 'none';
-                
-                // Show confirmation
-                const confirmationDiv = document.createElement('div');
-                confirmationDiv.className = 'confirmation-message';
-                confirmationDiv.innerHTML = `
-                    <div class="confirmation-title">¡CONFIRMADO!</div>
-                    <div class="confirmation-subtitle">🩺 TE ESPERAMOS 💉</div>
-                    <div class="confirmation-details">
-                        Viernes 5 de Septiembre - 20:00 hrs a 05:00 hrs<br>
-                        Vicente Pérez Rosales 1675, Casa B, La Reina
-                    </div>
-                    <div class="confirmation-emoji">💉 🩺 🌡️ 🏥 🚑 🎉 🌀</div>
-                `;
-                
-                document.body.appendChild(confirmationDiv);
-                createConfetti();
-            };
-            
-            // Submit the form
-            tempForm.submit();
-            addDebugInfo('Form submission initiated');
-        });
-
-        function showConfirmation() {
-            const confirmationDiv = document.createElement('div');
-            confirmationDiv.className = 'confirmation-message';
-            confirmationDiv.innerHTML = `
-                <div class="confirmation-title">¡CONFIRMADO!</div>
-                <div class="confirmation-subtitle">🩺 TE ESPERAMOS 💉</div>
-                <div class="confirmation-details">
-                    Viernes 5 de Septiembre - 20:00 hrs a 05:00 hrs<br>
-                    Vicente Pérez Rosales 1675, Casa B, La Reina
-                </div>
-                <div class="confirmation-emoji">💉 🩺 🌡️ 🏥 🚑 🎉 🌀</div>
-            `;
-            document.body.appendChild(confirmationDiv);
-        }
-        
         // Función para crear confetti
         function createConfetti() {
             const colors = ['#ff0080', '#00ffff', '#ff6b35', '#f72585', '#4cc9f0', '#ffff00'];
@@ -770,56 +657,26 @@
             }
         }
         
-        // Efectos adicionales en los inputs
-        const inputs = document.querySelectorAll('input, select, textarea');
-        inputs.forEach(input => {
-            input.addEventListener('focus', function() {
-                this.parentElement.style.transform = 'scale(1.02)';
-                this.parentElement.style.zIndex = '10';
-            });
-            
-            input.addEventListener('blur', function() {
-                this.parentElement.style.transform = 'scale(1)';
-                this.parentElement.style.zIndex = '1';
-            });
-        });
-        
-        // Animación del cursor personalizada
+        // Simple working cursor animation
         document.addEventListener('mousemove', function(e) {
-            // Create multiple trailing particles
-            for (let i = 0; i < 3; i++) {
-                setTimeout(() => {
-                    const cursor = document.createElement('div');
-                    cursor.style.position = 'fixed';
-                    cursor.style.left = e.clientX + 'px';
-                    cursor.style.top = e.clientY + 'px';
-                    cursor.style.width = '6px';
-                    cursor.style.height = '6px';
-                    cursor.style.background = i === 0 ? '#00ffff' : '#ff0080';
-                    cursor.style.borderRadius = '50%';
-                    cursor.style.pointerEvents = 'none';
-                    cursor.style.zIndex = '999';
-                    cursor.style.opacity = 1 - (i * 0.3);
-                    cursor.style.transform = 'scale(' + (1 - (i * 0.2)) + ')';
-                    cursor.style.transition = 'all 0.5s ease';
-                    
-                    document.body.appendChild(cursor);
-                    
-                    // Add groovy animation
-                    requestAnimationFrame(() => {
-                        cursor.style.transform += ' translate(' + (Math.random() * 20 - 10) + 'px, ' + (Math.random() * 20 - 10) + 'px)';
-                        cursor.style.opacity = '0';
-                    });
-                    
-                    setTimeout(() => {
-                        cursor.remove();
-                    }, 500);
-                }, i * 50);
-            }
+            const cursor = document.createElement('div');
+            cursor.style.position = 'fixed';
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            cursor.style.width = '6px';
+            cursor.style.height = '6px';
+            cursor.style.background = '#00ffff';
+            cursor.style.borderRadius = '50%';
+            cursor.style.pointerEvents = 'none';
+            cursor.style.zIndex = '999';
+            cursor.style.animation = 'sparkleAnim 1s ease-out forwards';
+            
+            document.body.appendChild(cursor);
+            
+            setTimeout(() => {
+                cursor.remove();
+            }, 1000);
         });
-
-        // Uncomment the next line to enable debug mode
-        // toggleDebug();
     </script>
 </body>
 </html>
