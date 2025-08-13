@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌀 FIESTA BECADOS ANESTESIA 2025 🌀</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: linear-gradient(45deg, #ff0080, #7928ca, #ff0080, #7928ca);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease-in-out infinite;
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: white;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Fondo animado con formas flotantes */
+        .floating-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float 20s infinite ease-in-out;
+        }
+        
+        .shape:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            background: #00ffff;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+            animation-duration: 15s;
+        }
+        
+        .shape:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            background: #ff6b35;
+            top: 60%;
+            right: 15%;
+            animation-delay: 3s;
+            animation-duration: 18s;
+        }
+        
+        .shape:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            background: #f72585;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 6s;
+            animation-duration: 12s;
+        }
+        
+        .shape:nth-child(4) {
+            width: 100px;
+            height: 100px;
+            background: #4cc9f0;
+            top: 30%;
+            right: 30%;
+            animation-delay: 9s;
+            animation-duration: 22s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) translateX(0px) scale(1) rotate(0deg); }
+            25% { transform: translateY(-50px) translateX(30px) scale(1.2) rotate(90deg); }
+            50% { transform: translateY(-20px) translateX(-40px) scale(0.8) rotate(180deg); }
+            75% { transform: translateY(-80px) translateX(20px) scale(1.1) rotate(270deg); }
+        }
+        
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 60px 20px;
+            position: relative;
+        }
+        
+        .main-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 4rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, #ff0080, #00ffff, #ff6b35, #f72585);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: textGlow 3s ease-in-out infinite, gradientShift 6s ease-in-out infinite;
+            text-shadow: 0 0 30px rgba(255, 0, 128, 0.5);
+            margin-bottom: 20px;
+            transform: perspective(500px) rotateX(15deg);
+        }
+        
+        @keyframes textGlow {
+            0%, 100% { filter: brightness(1) saturate(1); }
+            50% { filter: brightness(1.5) saturate(1.8) hue-rotate(45deg); }
+        }
+        
+        .subtitle {
+            font-size: 1.8rem;
+            font-weight: 300;
+            margin-bottom: 10px;
+            opacity: 0.9;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        .date-info {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #00ffff;
+            margin-bottom: 40px;
+            animation: neonGlow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes neonGlow {
+            from { text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff; }
+            to { text-shadow: 0 0 20px #00ffff, 0 0 30px #00ffff, 0 0 40px #00ffff; }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        /* Container principal */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        /* Formulario */
+        .registration-section {
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 30px;
+            padding: 50px;
+            margin: 40px 0;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .registration-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(255, 0, 128, 0.1), transparent, rgba(0, 255, 255, 0.1), transparent);
+            animation: rotate 8s linear infinite;
+            z-index: -1;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .form-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 40px;
+            background: linear-gradient(45deg, #ff6b35, #f72585, #4cc9f0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: textShimmer 3s ease-in-out infinite;
+        }
+        
+        @keyframes textShimmer {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .form-group {
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .form-group label {
+            display: block;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #00ffff;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px 20px;
+            font-size: 1rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+        
+        /* Estilos específicos para las opciones de los select */
+        .form-group select option {
+            background: white;
+            color: black;
+            padding: 10px;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #00ffff;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.02);
+        }
+        
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+        
+        .checkbox-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-right: 15px;
+            accent-color: #ff0080;
+        }
+        
+        .checkbox-group label {
+            margin: 0;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        /* Botón de inscripción */
+        .register-btn {
+            width: 100%;
+            padding: 20px;
+            font-family: 'Orbitron', monospace;
+            font-size: 1.3rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 25px;
+            background: linear-gradient(45deg, #ff0080, #7928ca, #ff6b35, #f72585);
+            background-size: 300% 300%;
+            color: white;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            animation: gradientShift 4s ease-in-out infinite;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 30px;
+        }
+        
+        .register-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(255, 0, 128, 0.4);
+            filter: brightness(1.2);
+        }
+        
+        .register-btn:active {
+            transform: translateY(-2px) scale(1.02);
+        }
+        
+        .register-btn::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transform: rotate(45deg);
+            transition: all 0.3s ease;
+            opacity: 0;
+        }
+        
+        .register-btn:hover::before {
+            animation: shimmer 1.5s ease-in-out infinite;
+            opacity: 1;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+        
+        /* Efectos adicionales */
+        .floating-pills {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 5;
+        }
+        
+        .pill {
+            position: absolute;
+            width: 20px;
+            height: 40px;
+            border-radius: 20px;
+            opacity: 0.6;
+            animation: pillFloat 15s infinite ease-in-out;
+        }
+        
+        .pill:nth-child(1) {
+            background: linear-gradient(45deg, #ff0080, #ff6b35);
+            top: 20%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+        
+        .pill:nth-child(2) {
+            background: linear-gradient(45deg, #7928ca, #4cc9f0);
+            top: 70%;
+            right: 8%;
+            animation-delay: 5s;
+            width: 15px;
+            height: 30px;
+        }
+        
+        .pill:nth-child(3) {
+            background: linear-gradient(45deg, #f72585, #00ffff);
+            bottom: 30%;
+            left: 15%;
+            animation-delay: 10s;
+            width: 25px;
+            height: 50px;
+        }
+        
+        @keyframes pillFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.6; }
+            25% { transform: translateY(-30px) rotate(90deg); opacity: 0.8; }
+            50% { transform: translateY(-10px) rotate(180deg); opacity: 0.4; }
+            75% { transform: translateY(-50px) rotate(270deg); opacity: 0.9; }
+        }
+        
+        /* Sparkles */
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #00ffff;
+            border-radius: 50%;
+            animation: sparkleAnim 3s infinite ease-in-out;
+        }
+        
+        @keyframes sparkleAnim {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+        
+        /* Mensaje de confirmación psicodélico */
+        .confirmation-message {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(45deg, #ff0080, #7928ca, #ff6b35, #f72585);
+            background-size: 400% 400%;
+            animation: gradientShift 2s ease-in-out infinite;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .confirmation-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 4rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, #00ffff, #ffffff, #ff6b35);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: textGlow 1.5s ease-in-out infinite, gradientShift 3s ease-in-out infinite;
+            text-shadow: 0 0 50px rgba(255, 255, 255, 0.8);
+            margin-bottom: 30px;
+            transform: perspective(500px) rotateX(15deg) scale(1.2);
+        }
+        
+        .confirmation-subtitle {
+            font-size: 2rem;
+            font-weight: 300;
+            margin-bottom: 20px;
+            animation: pulse 1s ease-in-out infinite;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.7);
+        }
+        
+        .confirmation-details {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 40px;
+            animation: neonGlow 2s ease-in-out infinite alternate;
+        }
+        
+        .confirmation-emoji {
+            font-size: 5rem;
+            animation: bounce 1s ease-in-out infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0) scale(1); }
+            40% { transform: translateY(-20px) scale(1.1); }
+            60% { transform: translateY(-10px) scale(1.05); }
+        }
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.4rem;
+            }
+            
+            .registration-section {
+                padding: 30px 20px;
+                margin: 20px 0;
+            }
+            
+            .form-title {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .main-title {
+                font-size: 2rem;
+            }
+            
+            .header {
+                padding: 40px 20px;
+            }
+        }
+
+        .banner-image {
+            text-align: center;
+            margin: 20px 0;
+            animation: float 30s ease-in-out infinite; /* Changed from 6s to 30s */
+        }
+
+        .banner-image img {
+            transition: transform 0.3s ease;
+        }
+
+        .banner-image img:hover {
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+<body>
+    <!-- Formas flotantes de fondo -->
+    <div class="floating-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    
+    <!-- Píldoras flotantes -->
+    <div class="floating-pills">
+        <div class="pill"></div>
+        <div class="pill"></div>
+        <div class="pill"></div>
+    </div>
+    
+    <!-- Header -->
+    <header class="header">
+        <h1 class="main-title">FIESTA BECADOS</h1>
+        <p class="subtitle">💉 Bienvenida & Despedida - Anestesia 2025 🩺</p>
+        <p class="date-info">📅 Viernes 5 de Septiembre • 🕘 21:00 hrs • 📍 <a href="https://maps.google.com/?q=Vicente+Pérez+Rosales+1675,+Casa+B,+La+Reina,+Chile" target="_blank" style="color: #00ffff; text-decoration: none; border-bottom: 1px dotted #00ffff;">Vicente Pérez Rosales 1675, Casa B, La Reina</a></p>
+    </header>
+    
+    <div class="container">
+        <!-- Add the image here -->
+        <div class="banner-image">
+            <img src="https://i.imgur.com/YPHd4EY.jpeg" alt="Fiesta Anestesia Banner" style="width: 100%; max-width: 800px; height: auto; border-radius: 15px; margin: 20px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+        </div>
+        
+        <!-- Sección de inscripción -->
+        <section class="registration-section">
+            <h2 class="form-title">¡INSCRÍBETE AHORA!</h2>
+            
+            <form id="registrationForm">
+                <div class="form-group">
+                    <label for="nombre">🩺 Nombre Completo</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Dr(a). Juan Pérez González" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">💉 Email</label>
+                    <input type="email" id="email" name="email" placeholder="tu.email@hospital.cl" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="status">🎓 Estado</label>
+                    <select id="status" name="status" required>
+                        <option value="">Selecciona tu estado</option>
+                        <option value="staff">👨‍⚕️ Staff</option>
+                        <option value="becado-1">💉 Becado 1er año (Bienvenida)</option>
+                        <option value="becado-2">📚 2do año</option>
+                        <option value="becado-3">🔥 3er año</option>
+                        <option value="egresando">🩺 Egresando (Despedida)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="acompanantes">👥 Número de Acompañantes</label>
+                    <select id="acompanantes" name="acompanantes">
+                        <option value="0">Solo yo</option>
+                        <option value="1">1 acompañante</option>
+                        <option value="2">2 acompañantes</option>
+                        <option value="3">3 acompañantes</option>
+                        <option value="4">Más de 3 (contactar organizador)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="comentarios">💬 Comentarios</label>
+                    <textarea id="comentarios" name="comentarios" rows="3" placeholder="Trago favorito, comentarios especiales, etc."></textarea>
+                </div>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="terminos" name="terminos" required>
+                    <label for="terminos">Acepto los términos y condiciones. Confirmo que asistiré a esta épica fiesta psicodélica de anestesia 🌀✨</label>
+                </div>
+                
+                <button type="submit" class="register-btn">
+                    🚀 CONFIRMAR ASISTENCIA 🚀
+                </button>
+            </form>
+        </section>
+    </div>
+
+    <script>
+        // Crear sparkles dinámicos
+        function createSparkle() {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.left = Math.random() * 100 + 'vw';
+            sparkle.style.top = Math.random() * 100 + 'vh';
+            sparkle.style.animationDelay = Math.random() * 3 + 's';
+            
+            const colors = ['#ff0080', '#00ffff', '#ff6b35', '#f72585', '#4cc9f0'];
+            sparkle.style.background = colors[Math.floor(Math.random() * colors.length)];
+            
+            document.body.appendChild(sparkle);
+            
+            setTimeout(() => {
+                sparkle.remove();
+            }, 3000);
+        }
+        
+        // Crear sparkles cada 500ms
+        setInterval(createSparkle, 500);
+        
+        // Manejar envío del formulario
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Recopilar datos del formulario
+            const formData = new FormData(this);
+            const data = {};
+            for (let [key, value] of formData.entries()) {
+                data[key] = value;
+            }
+            
+            // Animación del botón
+            const btn = document.querySelector('.register-btn');
+            const originalText = btn.textContent;
+            
+            btn.textContent = '🌀 PROCESANDO... 🌀';
+            btn.style.animation = 'pulse 0.5s ease-in-out infinite';
+            
+            // Enviar datos por email usando EmailJS o Formspree
+            // Aquí usamos una simulación del envío
+            const emailBody = `
+Nueva inscripción para la Fiesta de Becados de Anestesia:
+
+👤 Nombre: ${data.nombre}
+📧 Email: ${data.email}  
+🎓 Estado: ${data.status}
+👥 Acompañantes: ${data.acompanantes}
+💬 Comentarios: ${data.comentarios || 'Ninguno'}
+
+Fecha de inscripción: ${new Date().toLocaleString('es-CL')}
+            `.trim();
+            
+            // Simular envío de email (en producción usarías EmailJS, Formspree, etc.)
+            const mailtoLink = `mailto:tiaredlp@gmail.com,feimbcke@gmail.com?subject=Nueva Inscripción - Fiesta Becados Anestesia&body=${encodeURIComponent(emailBody)}`;
+            
+            // Simular procesamiento
+            setTimeout(() => {
+                // Ocultar el formulario
+                document.querySelector('.registration-section').style.display = 'none';
+                
+                // Mostrar mensaje de confirmación psicodélico
+                const confirmationDiv = document.createElement('div');
+                confirmationDiv.className = 'confirmation-message';
+                confirmationDiv.innerHTML = `
+                    <div class="confirmation-title">¡CONFIRMADO!</div>
+                    <div class="confirmation-subtitle">🩺 TE ESPERAMOS 💉</div>
+                    <div class="confirmation-details">
+                        Viernes 5 de Septiembre - 21:00 hrs<br>
+                        Vicente Pérez Rosales 1675, Casa B, La Reina
+                    </div>
+                    <div class="confirmation-emoji">💉 🩺 🌡️ 🏥 🚑 🎉 🌀</div>
+                `;
+                
+                document.body.appendChild(confirmationDiv);
+                
+                // Crear explosión de confeti
+                createConfetti();
+                
+                // Abrir cliente de correo
+                window.open(mailtoLink);
+                
+            }, 2000);
+        });
+        
+        // Función para crear confetti
+        function createConfetti() {
+            const colors = ['#ff0080', '#00ffff', '#ff6b35', '#f72585', '#4cc9f0', '#ffff00'];
+            
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.style.position = 'fixed';
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    confetti.style.top = '-10px';
+                    confetti.style.width = '8px';
+                    confetti.style.height = '8px';
+                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.borderRadius = '50%';
+                    confetti.style.pointerEvents = 'none';
+                    confetti.style.zIndex = '1000';
+                    
+                    document.body.appendChild(confetti);
+                    
+                    // Animación de caída
+                    confetti.animate([
+                        { transform: 'translateY(-10px) rotate(0deg)', opacity: 1 },
+                        { transform: 'translateY(100vh) rotate(720deg)', opacity: 0 }
+                    ], {
+                        duration: 3000 + Math.random() * 2000,
+                        easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+                    }).onfinish = () => confetti.remove();
+                    
+                }, i * 50);
+            }
+        }
+        
+        // Efectos adicionales en los inputs
+        const inputs = document.querySelectorAll('input, select, textarea');
+        inputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.style.transform = 'scale(1.02)';
+                this.parentElement.style.zIndex = '10';
+            });
+            
+            input.addEventListener('blur', function() {
+                this.parentElement.style.transform = 'scale(1)';
+                this.parentElement.style.zIndex = '1';
+            });
+        });
+        
+        // Animación del cursor personalizada
+        document.addEventListener('mousemove', function(e) {
+            const cursor = document.createElement('div');
+            cursor.style.position = 'fixed';
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            cursor.style.width = '6px';
+            cursor.style.height = '6px';
+            cursor.style.background = '#00ffff';
+            cursor.style.borderRadius = '50%';
+            cursor.style.pointerEvents = 'none';
+            cursor.style.zIndex = '999';
+            cursor.style.animation = 'sparkleAnim 1s ease-out forwards';
+            
+            document.body.appendChild(cursor);
+            
+            setTimeout(() => {
+                cursor.remove();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
