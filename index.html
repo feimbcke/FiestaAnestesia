@@ -699,46 +699,37 @@
             }, 1000);
         });
 
-        // Mobile touch effects
-        let isTouching = false;
+        // Mobile touch effects - hover only (no tap required)
+        let lastTouchTime = 0;
 
-        // Touch start event
-        document.addEventListener('touchstart', function(e) {
-            e.preventDefault();
-            isTouching = true;
-            
-            // Create sparkle for each touch point
-            for (let i = 0; i < e.touches.length; i++) {
-                const touch = e.touches[i];
-                createTouchSparkle(touch.clientX, touch.clientY);
-            }
-        });
-
-        // Touch move event (drag effect)
+        // Touch move event (hover effect without tap)
         document.addEventListener('touchmove', function(e) {
             e.preventDefault();
             
-            if (isTouching) {
+            const currentTime = Date.now();
+            // Throttle the effect to avoid too many sparkles
+            if (currentTime - lastTouchTime > 50) {
                 // Create sparkles for each moving touch point
                 for (let i = 0; i < e.touches.length; i++) {
                     const touch = e.touches[i];
                     createTouchSparkle(touch.clientX, touch.clientY);
                 }
+                lastTouchTime = currentTime;
             }
         });
 
-        // Touch end event
-        document.addEventListener('touchend', function(e) {
-            isTouching = false;
+        // Optional: Light touch start effect (very subtle)
+        document.addEventListener('touchstart', function(e) {
+            e.preventDefault();
             
-            // Create final sparkle burst
-            for (let i = 0; i < e.changedTouches.length; i++) {
-                const touch = e.changedTouches[i];
-                createTouchBurst(touch.clientX, touch.clientY);
+            // Only create one sparkle on initial touch, not a burst
+            if (e.touches.length > 0) {
+                const touch = e.touches[0];
+                createTouchSparkle(touch.clientX, touch.clientY);
             }
         });
 
-        // Function to create touch sparkles
+        // Function to create touch sparkles (same as before)
         function createTouchSparkle(x, y) {
             const sparkle = document.createElement('div');
             sparkle.style.position = 'fixed';
@@ -766,51 +757,7 @@
                 sparkle.remove();
             }, 1200);
         }
-
-        // Function to create touch burst effect
-        function createTouchBurst(x, y) {
-            // Create multiple sparkles in a burst pattern
-            for (let i = 0; i < 8; i++) {
-                setTimeout(() => {
-                    const sparkle = document.createElement('div');
-                    sparkle.style.position = 'fixed';
-                    sparkle.style.left = x + 'px';
-                    sparkle.style.top = y + 'px';
-                    sparkle.style.width = '6px';
-                    sparkle.style.height = '6px';
-                    sparkle.style.borderRadius = '50%';
-                    sparkle.style.pointerEvents = 'none';
-                    sparkle.style.zIndex = '999';
-                    
-                    const colors = ['#ff0080', '#00ffff', '#ff6b35', '#f72585', '#4cc9f0'];
-                    sparkle.style.background = colors[Math.floor(Math.random() * colors.length)];
-                    
-                    // Create burst pattern
-                    const angle = (i / 8) * Math.PI * 2;
-                    const distance = 30 + Math.random() * 20;
-                    const endX = Math.cos(angle) * distance;
-                    const endY = Math.sin(angle) * distance;
-                    
-                    document.body.appendChild(sparkle);
-                    
-                    // Animate the burst
-                    sparkle.animate([
-                        { 
-                            transform: 'translate(0px, 0px) scale(1)', 
-                            opacity: 1 
-                        },
-                        { 
-                            transform: `translate(${endX}px, ${endY}px) scale(0.5)`, 
-                            opacity: 0 
-                        }
-                    ], {
-                        duration: 800,
-                        easing: 'ease-out'
-                    }).onfinish = () => sparkle.remove();
-                    
-                }, i * 50);
-            }
-        }
     </script>
 </body>
 </html>
+``` 
