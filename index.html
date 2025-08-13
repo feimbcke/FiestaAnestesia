@@ -103,7 +103,7 @@
         
         .main-title {
             font-family: 'Orbitron', monospace;
-            font-size: 4rem;
+            font-size: 3.5rem;
             font-weight: 900;
             background: linear-gradient(45deg, #ff0080, #00ffff, #ff6b35, #f72585);
             background-size: 300% 300%;
@@ -112,21 +112,14 @@
             -webkit-text-fill-color: transparent;
             animation: textGlow 3s ease-in-out infinite, gradientShift 6s ease-in-out infinite;
             text-shadow: 0 0 30px rgba(255, 0, 128, 0.5);
-            margin-bottom: 20px;
+            margin-bottom: 40px;
             transform: perspective(500px) rotateX(15deg);
+            line-height: 1.2;
         }
         
         @keyframes textGlow {
             0%, 100% { filter: brightness(1) saturate(1); }
             50% { filter: brightness(1.5) saturate(1.8) hue-rotate(45deg); }
-        }
-        
-        .subtitle {
-            font-size: 1.8rem;
-            font-weight: 300;
-            margin-bottom: 10px;
-            opacity: 0.9;
-            animation: pulse 2s ease-in-out infinite;
         }
         
         .date-info {
@@ -459,10 +452,6 @@
                 font-size: 2.5rem;
             }
             
-            .subtitle {
-                font-size: 1.4rem;
-            }
-            
             .registration-section {
                 padding: 30px 20px;
                 margin: 20px 0;
@@ -486,20 +475,68 @@
         .banner-image {
             text-align: center;
             margin: 20px 0;
-            animation: float 30s ease-in-out infinite; /* Changed from 6s to 30s */
         }
 
         .banner-image img {
-            transition: transform 0.3s ease;
+            display: block;
+            margin: 0 auto;
         }
 
-        .banner-image img:hover {
-            transform: scale(1.02);
+        /* Debug info styles */
+        .debug-info {
+            background: rgba(0, 0, 0, 0.8);
+            color: #00ffff;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 12px;
+            display: none;
+        }
+
+        /* Add these styles to your existing CSS */
+        .calendar-links {
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+
+        .calendar-links a {
+            color: #00ffff;
+            text-decoration: none;
+        }
+
+        .message-section {
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 50px;
+            margin: 40px 0;
+            color: white;
+            line-height: 1.8;
+            font-size: 1.2rem;
+        }
+
+        .message-content p {
+            margin-bottom: 20px;
+        }
+
+        .postscript {
+            font-style: italic;
+            color: #00ffff;
+            margin-top: 30px;
+        }
+
+        .signature {
+            text-align: right;
+            font-family: 'Orbitron', monospace;
+            color: #ff0080;
+            margin-top: 30px;
+            font-size: 1.1rem;
         }
     </style>
 </head>
 <body>
-    <!-- Formas flotantes de fondo -->
     <div class="floating-shapes">
         <div class="shape"></div>
         <div class="shape"></div>
@@ -507,82 +544,66 @@
         <div class="shape"></div>
     </div>
     
-    <!-- Píldoras flotantes -->
-    <div class="floating-pills">
-        <div class="pill"></div>
-        <div class="pill"></div>
-        <div class="pill"></div>
-    </div>
-    
     <!-- Header -->
     <header class="header">
-        <h1 class="main-title">FIESTA BECADOS</h1>
-        <p class="subtitle">💉 Bienvenida & Despedida - Anestesia 2025 🩺</p>
-        <p class="date-info">📅 Viernes 5 de Septiembre • 🕘 21:00 hrs • 📍 <a href="https://maps.google.com/?q=Vicente+Pérez+Rosales+1675,+Casa+B,+La+Reina,+Chile" target="_blank" style="color: #00ffff; text-decoration: none; border-bottom: 1px dotted #00ffff;">Vicente Pérez Rosales 1675, Casa B, La Reina</a></p>
+        <h1 class="main-title">Fiesta de Bienvenida & Despedida<br>Becados Anestesia 2025</h1>
+        <p class="date-info">
+            📅 Viernes 5 de Septiembre • 🕗 20:00 hrs • 
+            📍 <a href="https://maps.google.com/?q=Vicente+Pérez+Rosales+1675,+Casa+B,+La+Reina,+Chile" target="_blank" style="color: #00ffff; text-decoration: none; border-bottom: 1px dotted #00ffff;">Vicente Pérez Rosales 1675, Casa B, La Reina</a>
+            <br>
+            👔 Dresscode: Informal (Sin miedo a la hiperventilación)
+            <br>
+            <span class="calendar-links">
+                📆 Agregar a calendario: 
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=🌀%20Fiesta%20Becados%20Anestesia%202025&details=Bienvenida%20%26%20Despedida%20-%20Anestesia%202025%0A%0ALugar:%20Vicente%20Pérez%20Rosales%201675,%20Casa%20B,%20La%20Reina&location=Vicente%20Pérez%20Rosales%201675,%20Casa%20B,%20La%20Reina&dates=20250905T230000Z/20250906T080000Z" target="_blank">
+                    Google
+                </a>
+                <span style="color: #00ffff;"> • </span>
+                <a href="https://outlook.live.com/calendar/0/deeplink/compose?subject=🌀%20Fiesta%20Becados%20Anestesia%202025&body=Bienvenida%20%26%20Despedida%20-%20Anestesia%202025%0A%0ALugar:%20Vicente%20Pérez%20Rosales%201675,%20Casa%20B,%20La%20Reina&location=Vicente%20Pérez%20Rosales%201675,%20Casa%20B,%20La%20Reina&startTime=2025-09-05T20:00:00&endTime=2025-09-06T05:00:00" target="_blank">
+                    Outlook
+                </a>
+            </span>
+        </p>
     </header>
     
     <div class="container">
         <!-- Add the image here -->
         <div class="banner-image">
-            <img src="https://i.imgur.com/YPHd4EY.jpeg" alt="Fiesta Anestesia Banner" style="width: 100%; max-width: 800px; height: auto; border-radius: 15px; margin: 20px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+            <img src="https://i.imgur.com/yCiE6Nj.gif" alt="Fiesta Anestesia Banner" style="width: 100%; max-width: 800px; height: auto; border-radius: 15px; margin: 20px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
         </div>
         
+        <!-- Debug info (hidden by default) -->
+        <div id="debugInfo" class="debug-info"></div>
+        
         <!-- Sección de inscripción -->
-        <section class="registration-section">
-            <h2 class="form-title">¡INSCRÍBETE AHORA!</h2>
-            
-            <form id="registrationForm">
-                <div class="form-group">
-                    <label for="nombre">🩺 Nombre Completo</label>
-                    <input type="text" id="nombre" name="nombre" placeholder="Dr(a). Juan Pérez González" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="email">💉 Email</label>
-                    <input type="email" id="email" name="email" placeholder="tu.email@hospital.cl" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="status">🎓 Estado</label>
-                    <select id="status" name="status" required>
-                        <option value="">Selecciona tu estado</option>
-                        <option value="staff">👨‍⚕️ Staff</option>
-                        <option value="becado-1">💉 Becado 1er año (Bienvenida)</option>
-                        <option value="becado-2">📚 2do año</option>
-                        <option value="becado-3">🔥 3er año</option>
-                        <option value="egresando">🩺 Egresando (Despedida)</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="acompanantes">👥 Número de Acompañantes</label>
-                    <select id="acompanantes" name="acompanantes">
-                        <option value="0">Solo yo</option>
-                        <option value="1">1 acompañante</option>
-                        <option value="2">2 acompañantes</option>
-                        <option value="3">3 acompañantes</option>
-                        <option value="4">Más de 3 (contactar organizador)</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="comentarios">💬 Comentarios</label>
-                    <textarea id="comentarios" name="comentarios" rows="3" placeholder="Trago favorito, comentarios especiales, etc."></textarea>
-                </div>
-                
-                <div class="checkbox-group">
-                    <input type="checkbox" id="terminos" name="terminos" required>
-                    <label for="terminos">Acepto los términos y condiciones. Confirmo que asistiré a esta épica fiesta psicodélica de anestesia 🌀✨</label>
-                </div>
-                
-                <button type="submit" class="register-btn">
-                    🚀 CONFIRMAR ASISTENCIA 🚀
-                </button>
-            </form>
+        <section class="message-section">
+            <div class="message-content">
+                <p>Queridos colegas del maravilloso mundo del sueño controlado:</p>
+                <p>Han sido tiempos de cambios, algo de incertidumbre y por qué no decirlo, de varios capítulos intensos dignos de compartir con una copa en la mano.</p>
+                <p>Ahora es momento de reírnos, desahogarnos y brindar hasta perder la noción del tiempo… pero nunca la vía venosa permeable.</p>
+                <p>Damos la bienvenida a los residentes que se suman, despedimos con cariño a los que parten y celebramos que, pese a todo, seguimos formando parte del mismo equipo, dentro y fuera de pabellón.</p>
+                <p>Tendremos música, picoteo, bar abierto, anécdotas, abrazos, brindis y esa terapia grupal no oficial que nos caracteriza.</p>
+                <p>¡Los esperamos!</p>
+                <p class="postscript">Pd: No olvides venir en Uber y dejar el auto en tu casa.</p>
+                <p class="signature">Comité organizador</p>
+            </div>
         </section>
     </div>
 
     <script>
+        // Debug function to show/hide debug info
+        function toggleDebug() {
+            const debugDiv = document.getElementById('debugInfo');
+            debugDiv.style.display = debugDiv.style.display === 'none' ? 'block' : 'none';
+        }
+
+        // Add debug info function
+        function addDebugInfo(message) {
+            const debugDiv = document.getElementById('debugInfo');
+            debugDiv.innerHTML += new Date().toLocaleTimeString() + ': ' + message + '<br>';
+            console.log('Debug:', message);
+        }
+
         // Crear sparkles dinámicos
         function createSparkle() {
             const sparkle = document.createElement('div');
@@ -608,65 +629,114 @@
         document.getElementById('registrationForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Recopilar datos del formulario
-            const formData = new FormData(this);
-            const data = {};
-            for (let [key, value] of formData.entries()) {
-                data[key] = value;
+            addDebugInfo('Form submission started');
+            
+            // Get form values consistently
+            const nombre = document.getElementById('nombre').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const status = document.getElementById('status').value;
+            const comentarios = document.getElementById('comentarios').value.trim();
+            const terminos = document.getElementById('terminos').checked;
+            
+            addDebugInfo(`Form data captured: nombre="${nombre}", email="${email}", status="${status}", comentarios="${comentarios}", terminos=${terminos}`);
+            
+            // Validate required fields
+            if (!nombre || !email || !status || !terminos) {
+                addDebugInfo('Validation failed - missing required fields');
+                alert('Por favor completa todos los campos requeridos');
+                return;
             }
             
-            // Animación del botón
+            // Animation
             const btn = document.querySelector('.register-btn');
             const originalText = btn.textContent;
-            
             btn.textContent = '🌀 PROCESANDO... 🌀';
             btn.style.animation = 'pulse 0.5s ease-in-out infinite';
             
-            // Enviar datos por email usando EmailJS o Formspree
-            // Aquí usamos una simulación del envío
-            const emailBody = `
-Nueva inscripción para la Fiesta de Becados de Anestesia:
-
-👤 Nombre: ${data.nombre}
-📧 Email: ${data.email}  
-🎓 Estado: ${data.status}
-👥 Acompañantes: ${data.acompanantes}
-💬 Comentarios: ${data.comentarios || 'Ninguno'}
-
-Fecha de inscripción: ${new Date().toLocaleString('es-CL')}
-            `.trim();
+            // Submit to Google Form with CORRECT entry IDs
+            const formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSc8RWbyCfY9-T8POoLz0jhOH5q0NS8ljpgR26pMaE3E6Fsg8Q/formResponse';
             
-            // Simular envío de email (en producción usarías EmailJS, Formspree, etc.)
-            const mailtoLink = `mailto:tiaredlp@gmail.com,feimbcke@gmail.com?subject=Nueva Inscripción - Fiesta Becados Anestesia&body=${encodeURIComponent(emailBody)}`;
+            // Create form data for submission with CORRECT entry IDs
+            const formData = new URLSearchParams({
+                'entry.541435909': nombre,           // Correct ID for 'nombre'
+                'entry.559316853': email,            // Correct ID for 'email' 
+                'entry.1845764975': status,          // Correct ID for 'status' (radio button)
+                'entry.1386237812': comentarios || 'Ninguno'  // Correct ID for 'comentarios'
+            });
             
-            // Simular procesamiento
-            setTimeout(() => {
-                // Ocultar el formulario
+            addDebugInfo(`Submitting to: ${formUrl}`);
+            addDebugInfo(`Form data: ${formData.toString()}`);
+            
+            // Create a hidden iframe for submission
+            const iframe = document.createElement('iframe');
+            iframe.style.display = 'none';
+            iframe.name = 'hidden_iframe';
+            document.body.appendChild(iframe);
+            
+            // Create a temporary form for submission
+            const tempForm = document.createElement('form');
+            tempForm.action = formUrl;
+            tempForm.method = 'POST';
+            tempForm.target = 'hidden_iframe';
+            
+            // Add form fields
+            Object.entries(Object.fromEntries(formData)).forEach(([key, value]) => {
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = key;
+                input.value = value;
+                tempForm.appendChild(input);
+            });
+            
+            document.body.appendChild(tempForm);
+            
+            // Handle iframe load event
+            iframe.onload = function() {
+                addDebugInfo('Form submitted successfully');
+                
+                // Clean up
+                document.body.removeChild(tempForm);
+                document.body.removeChild(iframe);
+                
+                // Hide form
                 document.querySelector('.registration-section').style.display = 'none';
                 
-                // Mostrar mensaje de confirmación psicodélico
+                // Show confirmation
                 const confirmationDiv = document.createElement('div');
                 confirmationDiv.className = 'confirmation-message';
                 confirmationDiv.innerHTML = `
                     <div class="confirmation-title">¡CONFIRMADO!</div>
                     <div class="confirmation-subtitle">🩺 TE ESPERAMOS 💉</div>
                     <div class="confirmation-details">
-                        Viernes 5 de Septiembre - 21:00 hrs<br>
+                        Viernes 5 de Septiembre - 20:00 hrs a 05:00 hrs<br>
                         Vicente Pérez Rosales 1675, Casa B, La Reina
                     </div>
                     <div class="confirmation-emoji">💉 🩺 🌡️ 🏥 🚑 🎉 🌀</div>
                 `;
                 
                 document.body.appendChild(confirmationDiv);
-                
-                // Crear explosión de confeti
                 createConfetti();
-                
-                // Abrir cliente de correo
-                window.open(mailtoLink);
-                
-            }, 2000);
+            };
+            
+            // Submit the form
+            tempForm.submit();
+            addDebugInfo('Form submission initiated');
         });
+
+        function showConfirmation() {
+            const confirmationDiv = document.createElement('div');
+            confirmationDiv.className = 'confirmation-message';
+            confirmationDiv.innerHTML = `
+                <div class="confirmation-title">¡CONFIRMADO!</div>
+                <div class="confirmation-subtitle">🩺 TE ESPERAMOS 💉</div>
+                <div class="confirmation-details">
+                    Viernes 5 de Septiembre - 20:00 hrs a 05:00 hrs<br>
+                    Vicente Pérez Rosales 1675, Casa B, La Reina
+                </div>
+                <div class="confirmation-emoji">💉 🩺 🌡️ 🏥 🚑 🎉 🌀</div>
+            `;
+            document.body.appendChild(confirmationDiv);
+        }
         
         // Función para crear confetti
         function createConfetti() {
@@ -716,24 +786,40 @@ Fecha de inscripción: ${new Date().toLocaleString('es-CL')}
         
         // Animación del cursor personalizada
         document.addEventListener('mousemove', function(e) {
-            const cursor = document.createElement('div');
-            cursor.style.position = 'fixed';
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-            cursor.style.width = '6px';
-            cursor.style.height = '6px';
-            cursor.style.background = '#00ffff';
-            cursor.style.borderRadius = '50%';
-            cursor.style.pointerEvents = 'none';
-            cursor.style.zIndex = '999';
-            cursor.style.animation = 'sparkleAnim 1s ease-out forwards';
-            
-            document.body.appendChild(cursor);
-            
-            setTimeout(() => {
-                cursor.remove();
-            }, 1000);
+            // Create multiple trailing particles
+            for (let i = 0; i < 3; i++) {
+                setTimeout(() => {
+                    const cursor = document.createElement('div');
+                    cursor.style.position = 'fixed';
+                    cursor.style.left = e.clientX + 'px';
+                    cursor.style.top = e.clientY + 'px';
+                    cursor.style.width = '6px';
+                    cursor.style.height = '6px';
+                    cursor.style.background = i === 0 ? '#00ffff' : '#ff0080';
+                    cursor.style.borderRadius = '50%';
+                    cursor.style.pointerEvents = 'none';
+                    cursor.style.zIndex = '999';
+                    cursor.style.opacity = 1 - (i * 0.3);
+                    cursor.style.transform = 'scale(' + (1 - (i * 0.2)) + ')';
+                    cursor.style.transition = 'all 0.5s ease';
+                    
+                    document.body.appendChild(cursor);
+                    
+                    // Add groovy animation
+                    requestAnimationFrame(() => {
+                        cursor.style.transform += ' translate(' + (Math.random() * 20 - 10) + 'px, ' + (Math.random() * 20 - 10) + 'px)';
+                        cursor.style.opacity = '0';
+                    });
+                    
+                    setTimeout(() => {
+                        cursor.remove();
+                    }, 500);
+                }, i * 50);
+            }
         });
+
+        // Uncomment the next line to enable debug mode
+        // toggleDebug();
     </script>
 </body>
 </html>
