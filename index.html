@@ -21,6 +21,12 @@
             min-height: 100vh;
             overflow-x: hidden;
             color: white;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
         
         @keyframes gradientShift {
@@ -386,6 +392,21 @@
             0%, 100% { opacity: 0; transform: scale(0); }
             50% { opacity: 1; transform: scale(1); }
         }
+
+        @keyframes touchSparkle {
+            0% { 
+                opacity: 1; 
+                transform: scale(0) rotate(0deg); 
+            }
+            50% { 
+                opacity: 1; 
+                transform: scale(1.2) rotate(180deg); 
+            }
+            100% { 
+                opacity: 0; 
+                transform: scale(0.5) rotate(360deg); 
+            }
+        }
         
         /* Mensaje de confirmación psicodélico */
         .confirmation-message {
@@ -568,7 +589,7 @@
     
     <div class="container">
         <!-- Add the image here -->
-        <div class="banner-image">
+        <div class="banner-image"></div>
             <img src="https://i.imgur.com/yCiE6Nj.gif" alt="Fiesta Anestesia Banner" style="width: 100%; max-width: 800px; height: auto; border-radius: 15px; margin: 20px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
         </div>
         
@@ -677,6 +698,119 @@
                 cursor.remove();
             }, 1000);
         });
+
+        // Mobile touch effects
+        let isTouching = false;
+
+        // Touch start event
+        document.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            isTouching = true;
+            
+            // Create sparkle for each touch point
+            for (let i = 0; i < e.touches.length; i++) {
+                const touch = e.touches[i];
+                createTouchSparkle(touch.clientX, touch.clientY);
+            }
+        });
+
+        // Touch move event (drag effect)
+        document.addEventListener('touchmove', function(e) {
+            e.preventDefault();
+            
+            if (isTouching) {
+                // Create sparkles for each moving touch point
+                for (let i = 0; i < e.touches.length; i++) {
+                    const touch = e.touches[i];
+                    createTouchSparkle(touch.clientX, touch.clientY);
+                }
+            }
+        });
+
+        // Touch end event
+        document.addEventListener('touchend', function(e) {
+            isTouching = false;
+            
+            // Create final sparkle burst
+            for (let i = 0; i < e.changedTouches.length; i++) {
+                const touch = e.changedTouches[i];
+                createTouchBurst(touch.clientX, touch.clientY);
+            }
+        });
+
+        // Function to create touch sparkles
+        function createTouchSparkle(x, y) {
+            const sparkle = document.createElement('div');
+            sparkle.style.position = 'fixed';
+            sparkle.style.left = x + 'px';
+            sparkle.style.top = y + 'px';
+            sparkle.style.width = '8px';
+            sparkle.style.height = '8px';
+            sparkle.style.borderRadius = '50%';
+            sparkle.style.pointerEvents = 'none';
+            sparkle.style.zIndex = '999';
+            sparkle.style.animation = 'sparkleAnim 1.2s ease-out forwards';
+            
+            // Random colors for mobile sparkles
+            const colors = ['#ff0080', '#00ffff', '#ff6b35', '#f72585', '#4cc9f0'];
+            sparkle.style.background = colors[Math.floor(Math.random() * colors.length)];
+            
+            // Add some random offset for more organic feel
+            const offsetX = (Math.random() - 0.5) * 20;
+            const offsetY = (Math.random() - 0.5) * 20;
+            sparkle.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+            
+            document.body.appendChild(sparkle);
+            
+            setTimeout(() => {
+                sparkle.remove();
+            }, 1200);
+        }
+
+        // Function to create touch burst effect
+        function createTouchBurst(x, y) {
+            // Create multiple sparkles in a burst pattern
+            for (let i = 0; i < 8; i++) {
+                setTimeout(() => {
+                    const sparkle = document.createElement('div');
+                    sparkle.style.position = 'fixed';
+                    sparkle.style.left = x + 'px';
+                    sparkle.style.top = y + 'px';
+                    sparkle.style.width = '6px';
+                    sparkle.style.height = '6px';
+                    sparkle.style.borderRadius = '50%';
+                    sparkle.style.pointerEvents = 'none';
+                    sparkle.style.zIndex = '999';
+                    
+                    const colors = ['#ff0080', '#00ffff', '#ff6b35', '#f72585', '#4cc9f0'];
+                    sparkle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    
+                    // Create burst pattern
+                    const angle = (i / 8) * Math.PI * 2;
+                    const distance = 30 + Math.random() * 20;
+                    const endX = Math.cos(angle) * distance;
+                    const endY = Math.sin(angle) * distance;
+                    
+                    document.body.appendChild(sparkle);
+                    
+                    // Animate the burst
+                    sparkle.animate([
+                        { 
+                            transform: 'translate(0px, 0px) scale(1)', 
+                            opacity: 1 
+                        },
+                        { 
+                            transform: `translate(${endX}px, ${endY}px) scale(0.5)`, 
+                            opacity: 0 
+                        }
+                    ], {
+                        duration: 800,
+                        easing: 'ease-out'
+                    }).onfinish = () => sparkle.remove();
+                    
+                }, i * 50);
+            }
+        }
     </script>
 </body>
 </html>
